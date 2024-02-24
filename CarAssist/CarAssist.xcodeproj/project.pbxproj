@@ -21,6 +21,11 @@
 		42DF5E3B2B87A57E00A66282 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 42DF5E3A2B87A57E00A66282 /* FirebaseAuthCombine-Community */; };
 		42DF5E3D2B87A57E00A66282 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 42DF5E3C2B87A57E00A66282 /* FirebaseDatabase */; };
 		42DF5E3F2B87A57E00A66282 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 42DF5E3E2B87A57E00A66282 /* FirebaseDatabaseSwift */; };
+		42DF5E412B87A6C400A66282 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DF5E402B87A6C400A66282 /* AuthenticationView.swift */; };
+		42DF5E432B87A6F200A66282 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DF5E422B87A6F200A66282 /* AuthenticationViewModel.swift */; };
+		42DF5E452B87A75500A66282 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DF5E442B87A75500A66282 /* LoginView.swift */; };
+		42DF5E472B87A78000A66282 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DF5E462B87A78000A66282 /* SignupView.swift */; };
+		42DF5E492B87A9AA00A66282 /* AuthenticatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DF5E482B87A9AA00A66282 /* AuthenticatedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +38,11 @@
 		42DF5E2D2B86E14200A66282 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		42DF5E2F2B86F1F500A66282 /* CarInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfo.swift; sourceTree = "<group>"; };
 		42DF5E312B87A44100A66282 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		42DF5E402B87A6C400A66282 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		42DF5E422B87A6F200A66282 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		42DF5E442B87A75500A66282 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		42DF5E462B87A78000A66282 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		42DF5E482B87A9AA00A66282 /* AuthenticatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +65,7 @@
 		42DF5E0F2B86DF0000A66282 = {
 			isa = PBXGroup;
 			children = (
+				42DF5E482B87A9AA00A66282 /* AuthenticatedView.swift */,
 				42DF5E1A2B86DF0000A66282 /* CarAssist */,
 				42DF5E192B86DF0000A66282 /* Products */,
 			);
@@ -76,6 +87,10 @@
 				42DF5E2B2B86E12900A66282 /* DashboardView.swift */,
 				42DF5E2F2B86F1F500A66282 /* CarInfo.swift */,
 				42DF5E2D2B86E14200A66282 /* Color+.swift */,
+				42DF5E402B87A6C400A66282 /* AuthenticationView.swift */,
+				42DF5E442B87A75500A66282 /* LoginView.swift */,
+				42DF5E462B87A78000A66282 /* SignupView.swift */,
+				42DF5E422B87A6F200A66282 /* AuthenticationViewModel.swift */,
 				42DF5E1F2B86DF0200A66282 /* Assets.xcassets */,
 				42DF5E312B87A44100A66282 /* GoogleService-Info.plist */,
 				42DF5E212B86DF0200A66282 /* Preview Content */,
@@ -173,10 +188,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42DF5E492B87A9AA00A66282 /* AuthenticatedView.swift in Sources */,
+				42DF5E472B87A78000A66282 /* SignupView.swift in Sources */,
 				42DF5E1E2B86DF0000A66282 /* ContentView.swift in Sources */,
 				42DF5E2E2B86E14200A66282 /* Color+.swift in Sources */,
+				42DF5E432B87A6F200A66282 /* AuthenticationViewModel.swift in Sources */,
+				42DF5E412B87A6C400A66282 /* AuthenticationView.swift in Sources */,
 				42DF5E2C2B86E12900A66282 /* DashboardView.swift in Sources */,
 				42DF5E302B86F1F500A66282 /* CarInfo.swift in Sources */,
+				42DF5E452B87A75500A66282 /* LoginView.swift in Sources */,
 				42DF5E1C2B86DF0000A66282 /* CarAssistApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
