@@ -24,6 +24,10 @@ struct AuthenticationView: View {
           .environmentObject(viewModel)
       }
     }
+    .background {
+        Color.backgroundGradient
+    }
+    .preferredColorScheme(.dark)
   }
 }
 

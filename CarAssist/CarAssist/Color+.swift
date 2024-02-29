@@ -16,7 +16,7 @@ extension Color {
 //    static var lightGreenColor: Color {
 //        Color("lightGreen")
 //    }
-    private var backgroundGradient: LinearGradient {
+    static var backgroundGradient: LinearGradient {
         LinearGradient(
                     gradient: Gradient(stops: [
                 .init(color: Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)), location: 0),

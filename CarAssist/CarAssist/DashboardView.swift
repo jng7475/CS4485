@@ -9,10 +9,8 @@ import SwiftUI
 
 struct DashboardView: View {
     @ObservedObject var carInfo = CarInfo.shared
-    @State var showReportField = false
     var body: some View {
         NavigationView {
-            
             VStack {
                 ZStack {
                     LinearGradient(colors: [.darkPurple, .lightPink, .lightPurple], startPoint: UnitPoint(x: 0.1, y: 0.1), endPoint: UnitPoint(x: 0.9, y: 0.9))
@@ -61,6 +59,11 @@ struct DashboardView: View {
                 //                           endPoint: UnitPoint(x: 1, y: 1))
                 backgroundGradient
                     .ignoresSafeArea()
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink(destination: CameraView(), label: {Image(systemName: "camera")})
+                }
             }
         }
     }

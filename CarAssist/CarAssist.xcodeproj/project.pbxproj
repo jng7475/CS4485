@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		426AF9E32B90A01B00323B9D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426AF9E22B90A01B00323B9D /* MenuView.swift */; };
+		426AF9E52B90A0EE00323B9D /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426AF9E42B90A0EE00323B9D /* ChatView.swift */; };
+		426AF9E72B90A13300323B9D /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426AF9E62B90A13300323B9D /* MessageView.swift */; };
+		426AF9E92B90A14E00323B9D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426AF9E82B90A14E00323B9D /* Message.swift */; };
+		426AF9ED2B90A18100323B9D /* MessageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426AF9EC2B90A18100323B9D /* MessageVM.swift */; };
+		426AF9EF2B90A5E800323B9D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426AF9EE2B90A5E800323B9D /* SettingsView.swift */; };
+		426AF9F12B90B3A700323B9D /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426AF9F02B90B3A600323B9D /* CameraView.swift */; };
 		42DF5E1C2B86DF0000A66282 /* CarAssistApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DF5E1B2B86DF0000A66282 /* CarAssistApp.swift */; };
 		42DF5E1E2B86DF0000A66282 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DF5E1D2B86DF0000A66282 /* ContentView.swift */; };
 		42DF5E202B86DF0200A66282 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DF5E1F2B86DF0200A66282 /* Assets.xcassets */; };
@@ -29,6 +36,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		426AF9E22B90A01B00323B9D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		426AF9E42B90A0EE00323B9D /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		426AF9E62B90A13300323B9D /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		426AF9E82B90A14E00323B9D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		426AF9EC2B90A18100323B9D /* MessageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageVM.swift; sourceTree = "<group>"; };
+		426AF9EE2B90A5E800323B9D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		426AF9F02B90B3A600323B9D /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		42DF5E182B86DF0000A66282 /* CarAssist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarAssist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42DF5E1B2B86DF0000A66282 /* CarAssistApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarAssistApp.swift; sourceTree = "<group>"; };
 		42DF5E1D2B86DF0000A66282 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,7 +79,6 @@
 		42DF5E0F2B86DF0000A66282 = {
 			isa = PBXGroup;
 			children = (
-				42DF5E482B87A9AA00A66282 /* AuthenticatedView.swift */,
 				42DF5E1A2B86DF0000A66282 /* CarAssist */,
 				42DF5E192B86DF0000A66282 /* Products */,
 			);
@@ -88,7 +101,15 @@
 				42DF5E2F2B86F1F500A66282 /* CarInfo.swift */,
 				42DF5E2D2B86E14200A66282 /* Color+.swift */,
 				42DF5E402B87A6C400A66282 /* AuthenticationView.swift */,
+				42DF5E482B87A9AA00A66282 /* AuthenticatedView.swift */,
+				426AF9EE2B90A5E800323B9D /* SettingsView.swift */,
+				426AF9E22B90A01B00323B9D /* MenuView.swift */,
+				426AF9E42B90A0EE00323B9D /* ChatView.swift */,
+				426AF9E62B90A13300323B9D /* MessageView.swift */,
+				426AF9E82B90A14E00323B9D /* Message.swift */,
+				426AF9EC2B90A18100323B9D /* MessageVM.swift */,
 				42DF5E442B87A75500A66282 /* LoginView.swift */,
+				426AF9F02B90B3A600323B9D /* CameraView.swift */,
 				42DF5E462B87A78000A66282 /* SignupView.swift */,
 				42DF5E422B87A6F200A66282 /* AuthenticationViewModel.swift */,
 				42DF5E1F2B86DF0200A66282 /* Assets.xcassets */,
@@ -192,12 +213,19 @@
 				42DF5E472B87A78000A66282 /* SignupView.swift in Sources */,
 				42DF5E1E2B86DF0000A66282 /* ContentView.swift in Sources */,
 				42DF5E2E2B86E14200A66282 /* Color+.swift in Sources */,
+				426AF9E52B90A0EE00323B9D /* ChatView.swift in Sources */,
+				426AF9E72B90A13300323B9D /* MessageView.swift in Sources */,
 				42DF5E432B87A6F200A66282 /* AuthenticationViewModel.swift in Sources */,
 				42DF5E412B87A6C400A66282 /* AuthenticationView.swift in Sources */,
 				42DF5E2C2B86E12900A66282 /* DashboardView.swift in Sources */,
+				426AF9EF2B90A5E800323B9D /* SettingsView.swift in Sources */,
+				426AF9E32B90A01B00323B9D /* MenuView.swift in Sources */,
 				42DF5E302B86F1F500A66282 /* CarInfo.swift in Sources */,
+				426AF9F12B90B3A700323B9D /* CameraView.swift in Sources */,
+				426AF9ED2B90A18100323B9D /* MessageVM.swift in Sources */,
 				42DF5E452B87A75500A66282 /* LoginView.swift in Sources */,
 				42DF5E1C2B86DF0000A66282 /* CarAssistApp.swift in Sources */,
+				426AF9E92B90A14E00323B9D /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +284,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -313,7 +341,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -334,6 +362,7 @@
 				DEVELOPMENT_TEAM = T76274KP97;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need Camera for detecting road signs";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -363,6 +392,7 @@
 				DEVELOPMENT_TEAM = T76274KP97;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need Camera for detecting road signs";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
