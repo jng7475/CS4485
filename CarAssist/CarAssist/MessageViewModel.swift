@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MessageVM: ObservableObject {
+class MessageViewModel: ObservableObject {
     
     let apiUrl = ""
     

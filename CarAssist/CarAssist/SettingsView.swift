@@ -16,6 +16,7 @@ struct SettingsView: View {
             } label: {
                 Text("SIGN OUT")
             }
+            
         }
     }
 }

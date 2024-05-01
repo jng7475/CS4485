@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ChatView: View {
 
-    @ObservedObject var messageVM = MessageVM()
+    @ObservedObject var messageVM = MessageViewModel()
     @State var typingMessage: String = ""
     @Namespace var bottomID
     @FocusState private var fieldIsFocused: Bool

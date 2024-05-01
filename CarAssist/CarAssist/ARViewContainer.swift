@@ -39,6 +39,7 @@ struct ARViewContainer: UIViewRepresentable {
         var arView: ARView
         private var requests = [VNRequest]()
         var bufferSize: CGSize = .zero
+        var speechController = SpeechManger()
         var timer: Timer?
         private var scannedResults: ScanResults
         var resultTime: Date = Date.now
@@ -65,36 +66,6 @@ struct ARViewContainer: UIViewRepresentable {
             } catch {
                 print(error)
             }
-            
-            /*
-             let requestHandler = VNImageRequestHandler(cvPixelBuffer: frame.capturedImage)
-             
-             // Create a new request to recognize text.
-             let request = VNRecognizeTextRequest(completionHandler: recognizeTextHandler)
-             request.recognitionLevel = .fast
-             
-             do {
-             // Perform the text-recognition request.
-             //   try requestHandler.perform([request])
-             } catch {
-             print("Unable to perform the requests: \(error).")
-             }
-             */
-        }
-        
-        func recognizeTextHandler(request: VNRequest, error: Error?) {
-            guard let observations =
-                    request.results as? [VNRecognizedTextObservation] else {
-                return
-            }
-            let recognizedStrings = observations.compactMap { observation in
-                // Return the string of the top VNRecognizedText instance.
-                return observation.topCandidates(1).first?.string
-            }
-            
-            // Process the recognized strings.
-            //processResults(recognizedStrings)
-            print(recognizedStrings)
         }
         
         public func exifOrientationFromDeviceOrientation() -> CGImagePropertyOrientation {
@@ -120,7 +91,7 @@ struct ARViewContainer: UIViewRepresentable {
         func setupVision() -> NSError? {
             let error: NSError! = nil
             
-            guard let modelURL = Bundle.main.url(forResource: "SignDetection4 1", withExtension: "mlmodelc") else {
+            guard let modelURL = Bundle.main.url(forResource: "SignModel06 Iteration 15150", withExtension: "mlmodelc") else {
                 return NSError(domain: "VisionObjectRecognitionViewController", code: -1, userInfo: [NSLocalizedDescriptionKey: "Model file is missing"])
             }
             do {
@@ -156,61 +127,61 @@ struct ARViewContainer: UIViewRepresentable {
                         if scannedResults.signType != .pedestrianCrossing {
                             scannedResults.signType = .pedestrianCrossing
                             scannedResults.severity = .warning
+                            speechController.speak(text: "Caution, pedestrian crossing ahead", urgency: .warning)
                         }
                     case "R1-1":
                         if scannedResults.signType != .stopSign {
                             scannedResults.signType = .stopSign
                             scannedResults.severity = .warning
+                            speechController.speak(text: "Stop sign ahead", urgency: .warning)
                         }
                     case "R5-1":
                         if scannedResults.signType != .doNotEnter {
                             scannedResults.signType = .doNotEnter
                             scannedResults.severity = .informative
+                            speechController.speak(text: "Do not enter", urgency: .informative)
                         }
                     case "R1-2":
                         if scannedResults.signType != .yield {
                             scannedResults.signType = .yield
                             scannedResults.severity = .warning
+                            speechController.speak(text: "Caution, yield to other traffic", urgency: .warning)
                         }
                     case "R2-140":
                         if scannedResults.signType != .spdlmt40 {
                             scannedResults.signType = .spdlmt40
                             scannedResults.severity = .informative
-                        }
-                    case "R2-135":
-                        if scannedResults.signType != .spdlmt35 {
-                            scannedResults.signType = .spdlmt35
-                            scannedResults.severity = .informative
-                        }
-                    case "R2-130":
-                        if scannedResults.signType != .spdlmt30 {
-                            scannedResults.signType = .spdlmt30
-                            scannedResults.severity = .informative
+                            speechController.speak(text: "Speed limit 40 miles per hour", urgency: .informative)
                         }
                     case "R2-125":
                         if scannedResults.signType != .speedLimit25 {
                             scannedResults.signType = .speedLimit25
                             scannedResults.severity = .informative
+                            speechController.speak(text: "Speed limit 25 miles per hour", urgency: .informative)
                         }
                     case "R3-4":
                         if scannedResults.signType != .noUTurn {
                             scannedResults.signType = .noUTurn
                             scannedResults.severity = .informative
+                            speechController.speak(text: "No U-Turn ahead", urgency: .informative)
                         }
                     case "R6-1":
                         if scannedResults.signType != .oneWay {
                             scannedResults.signType = .oneWay
                             scannedResults.severity = .informative
+                            speechController.speak(text: "One Way road", urgency: .informative)
                         }
                     case "W3-3":
                         if scannedResults.signType != .trafficLightAhead {
                             scannedResults.signType = .trafficLightAhead
                             scannedResults.severity = .informative
+                            speechController.speak(text: "Traffic light ahead", urgency: .informative)
                         }
                     case "W3-1":
                         if scannedResults.signType != .stopSignAhead {
                             scannedResults.signType = .stopSignAhead
                             scannedResults.severity = .informative
+                            speechController.speak(text: "Stop sign ahead", urgency: .informative)
                         }
                     default:
                         print(topLabelObservation.identifier)
@@ -223,17 +194,42 @@ struct ARViewContainer: UIViewRepresentable {
         func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
             for anchor in anchors {
                 guard let faceAnchor = anchor as? ARFaceAnchor else { return }
+                let faceTransform = faceAnchor.transform
+                let pitch = asin(-faceTransform.columns.2.y)  // Tilt down/up (x-axis rotation)
+                let yaw = atan2(faceTransform.columns.0.y, faceTransform.columns.1.y)  // Turn left/right (y-axis rotation)
                 let left = faceAnchor.blendShapes[.eyeBlinkLeft]
                 let right = faceAnchor.blendShapes[.eyeBlinkRight]
-                if timer == nil && ((left?.doubleValue ?? 0.0 >= 0.8) || (right?.doubleValue ?? 0.0 >= 0.8)) {
-                    timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: {timer in
-//                        self.speechController.speak(text: "Please be sure to keep your attention on the road", urgency: .hazard)
-                    })
-                    RunLoop.current.add(timer!, forMode: RunLoop.Mode.common)
+                
+                if timer == nil {
+                    if ((left?.doubleValue ?? 0.0 >= 0.8) || (right?.doubleValue ?? 0.0 >= 0.8)) {
+                        timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: {timer in
+                            self.scannedResults.signType = .distracted
+                            self.speechController.speak(text: "Please be sure to keep your attention on the road", urgency: .hazard)
+                        })
+                        RunLoop.current.add(timer!, forMode: RunLoop.Mode.common)
+                    }
+                    // Check if the user looks down
+                    if pitch > 0.5 {  // Threshold for looking down
+                        // Action when the user looks down
+                        self.scannedResults.signType = .distracted
+                        self.speechController.speak(text: "Please be sure to keep your attention on the road", urgency: .hazard)
+                    }
+                    
+                    // Check if the user turns head to the left or right
+                    if yaw > 0.5 {  // Threshold for looking to the right
+                        // Action when the user looks to the right
+                        self.scannedResults.signType = .distracted
+                        self.speechController.speak(text: "Please be sure to keep your attention on the road", urgency: .hazard)
+                    } else if yaw < -0.5 {  // Threshold for looking to the left
+                        // Action when the user looks to the left
+                        self.scannedResults.signType = .distracted
+                        self.speechController.speak(text: "Please be sure to keep your attention on the road", urgency: .hazard)
+                    }
                 } else if (timer != nil) && (left?.doubleValue ?? 1.0 <= 0.8) && (right?.doubleValue ?? 1.0 <= 0.8) {
                     timer?.invalidate()
                     timer = nil
                 }
+                // Head orientation detection
                 
             }
         }
@@ -274,6 +270,7 @@ enum SignType: String {
     case oneWay = "One Way"
     case trafficLightAhead = "Traffic light ahead"
     case stopSignAhead = "Stop sign ahead"
+    case distracted = "Pay Attention!"
     case empty
 }
 
